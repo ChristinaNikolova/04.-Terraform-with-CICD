@@ -34,7 +34,7 @@ resource "azurerm_storage_account" "asc" {
 }
 
 resource "azurerm_storage_container" "backend_container" {
-  name                  = "taskboardcontainerchrisi"
+  name = "taskboardcontainerchrisi"
 }
 
 resource "random_integer" "ri" {
