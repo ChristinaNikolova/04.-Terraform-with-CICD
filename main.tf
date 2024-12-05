@@ -20,23 +20,6 @@ provider "azurerm" {
   }
 }
 
-resource "azurerm_resource_group" "argst" {
-  name     = "StorageRG"
-  location = "West Europe"
-}
-
-resource "azurerm_storage_account" "asc" {
-  name                     = "taskboardstoragechrisi"
-  resource_group_name      = azurerm_resource_group.argst.name
-  location                 = azurerm_resource_group.argst.location
-  account_tier             = "Standard"
-  account_replication_type = "LRS"
-}
-
-resource "azurerm_storage_container" "backend_container" {
-  name = "taskboardcontainerchrisi"
-}
-
 resource "random_integer" "ri" {
   min = 10000
   max = 99999
