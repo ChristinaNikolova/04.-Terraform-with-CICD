@@ -51,3 +51,23 @@ jobs:
         with:
           name: terraform-plan
           path: terraform.plan
+
+  terraform-apply:
+    needs: terraform-plan
+    name: "Terraform apply"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v4
+      - name: Terraform Setup
+        uses: hashicorp/setup-terraform@v1      
+      - name: Terraform Init
+        run: terraform init
+      - name: Download Terraform Plan
+        uses: actions/download-artifact@v3
+        with:
+          name: terraform-plan
+          path: .
+      - name: Terraform Apply
+        run: terraform apply  -auto-approve terraform.plan
