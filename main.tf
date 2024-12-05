@@ -34,9 +34,10 @@ resource "azurerm_storage_account" "asa" {
   name                     = "StorageRG"
   resource_group_name      = azurerm_resource_group.arg.name
   location                 = azurerm_resource_group.arg.location
-  account_tier              = "Standard"
-  account_replication_type = "GRS"
+  account_tier              = "Standard_LRS"
+  account_replication_type = "StorageV2"
 }
+
 resource "azurerm_service_plan" "asp" {
   name                = "${var.app_service_plan_name}${random_integer.ri.result}"
   location            = azurerm_resource_group.arg.location
