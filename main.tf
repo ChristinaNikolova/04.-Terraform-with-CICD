@@ -37,8 +37,8 @@ resource "azurerm_resource_group" "argst" {
 
 resource "azurerm_storage_account" "asa" {
   name                     = "taskboardstoragechrisi"
-  resource_group_name      = azurerm_resource_group.arg.name
-  location                 = azurerm_resource_group.arg.location
+  resource_group_name      = azurerm_resource_group.argst.name
+  location                 = azurerm_resource_group.argst.location
   account_tier             = "Standard"
   account_replication_type = "LRS"
 }
